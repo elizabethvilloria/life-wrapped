@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="homepage" style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+      <h1>📆 Life Wrapped</h1>
+      <p>Your life. Recapped beautifully.</p>
+
+      <div style={{ marginTop: '2rem' }}>
+        <button style={buttonStyle}>Log My Day</button>
+        <button style={buttonStyle}>View Recap</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+const buttonStyle = {
+  padding: '1rem 2rem',
+  margin: '0.5rem',
+  fontSize: '1rem',
+  borderRadius: '8px',
+  cursor: 'pointer',
+};
+
+export default App;
