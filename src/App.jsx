@@ -1,16 +1,45 @@
-// src/App.jsx
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
-    <div className="homepage" style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/log" element={<LogPage />} />
+      <Route path="/recap" element={<RecapPage />} />
+    </Routes>
+  );
+}
+
+function Home() {
+  const navigate = useNavigate();
+
+  return (
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>📆 Life Wrapped</h1>
       <p>Your life. Recapped beautifully.</p>
-
       <div style={{ marginTop: '2rem' }}>
-        <button style={buttonStyle}>Log My Day</button>
-        <button style={buttonStyle}>View Recap</button>
+        <button style={buttonStyle} onClick={() => navigate('/log')}>Log My Day</button>
+        <button style={buttonStyle} onClick={() => navigate('/recap')}>View Recap</button>
       </div>
+    </div>
+  );
+}
+
+function LogPage() {
+  return (
+    <div style={{ padding: '2rem' }}>
+      <h2>📝 Log Your Day</h2>
+      <p>Form coming soon!</p>
+    </div>
+  );
+}
+
+function RecapPage() {
+  return (
+    <div style={{ padding: '2rem' }}>
+      <h2>📊 Your Recap</h2>
+      <p>Recap data will be shown here.</p>
     </div>
   );
 }
