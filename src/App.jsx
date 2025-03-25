@@ -26,11 +26,60 @@ function Home() {
   );
 }
 
+import { useState } from 'react';
+
 function LogPage() {
+  const [form, setForm] = useState({
+    mood: '',
+    food: '',
+    song: '',
+    highlight: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Your log:", form);
+    alert("Day logged! ✅");
+    setForm({ mood: '', food: '', song: '', highlight: '' }); // Reset form
+  };
+
   return (
-    <div style={{ padding: '2rem' }}>
+    <div style={{ padding: '2rem', maxWidth: '500px', margin: '0 auto' }}>
       <h2>📝 Log Your Day</h2>
-      <p>Form coming soon!</p>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <label>
+          Mood:
+          <select name="mood" value={form.mood} onChange={handleChange} required>
+            <option value="">Select mood</option>
+            <option value="😊">😊 Happy</option>
+            <option value="😐">😐 Meh</option>
+            <option value="😔">😔 Sad</option>
+            <option value="😤">😤 Stressed</option>
+          </select>
+        </label>
+
+        <label>
+          What you ate:
+          <input type="text" name="food" value={form.food} onChange={handleChange} required />
+        </label>
+
+        <label>
+          Song of the day:
+          <input type="text" name="song" value={form.song} onChange={handleChange} />
+        </label>
+
+        <label>
+          Highlight of the day:
+          <textarea name="highlight" value={form.highlight} onChange={handleChange} rows={3} />
+        </label>
+
+        <button type="submit" style={{ padding: '0.8rem', fontWeight: 'bold' }}>Submit</button>
+      </form>
     </div>
   );
 }
